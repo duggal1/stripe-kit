@@ -71,11 +71,7 @@ export function PricingSection() {
   return (
 
     <section className="relative py-32 overflow-hidden">
-      <Spotlight
-        className="-top-40 left-0 md:left-60"
-        fill="white"
-       
-      />
+      
       <Particles
         className="absolute inset-0 opacity-40"
         quantity={100}
@@ -85,7 +81,7 @@ export function PricingSection() {
       />
       
 
-      <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/80 to-background/100" />
+      <div className="absolute inset-0" />
 
       <div className="flex flex-col gap-24">
         <div className="relative space-y-24">
@@ -165,8 +161,9 @@ export function PricingSection() {
                     transition={{ type: "spring", duration: 0.6 }}
                   />
                 )}
-                <span className="inline-flex items-center bg-primary/10 ml-2 px-2 py-0.5 rounded-full font-medium text-primary/80 text-xs">
-                  Save 20%
+                <span className="inline-flex items-center bg-gradient-to-tl from-indigo-500 via-purple-500 to-pink-500 shadow-lg ml-2 px-3 py-1 rounded-full font-semibold text-white text-xs transform transition-transform hover:scale-105">
+                  <span className="mr-1">🎉</span> 
+                  <span className="font-bold">Save 20%</span>
                 </span>
               </button>
             </div>
@@ -176,123 +173,121 @@ export function PricingSection() {
             variants={container}
             initial="hidden"
             animate="show"
-            className="relative gap-8 grid grid-cols-1 md:grid-cols-2 mx-auto px-6 max-w-7xl"
+            className="gap-8 grid grid-cols-1 md:grid-cols-2 mx-auto px-6 max-w-7xl"
           >
             {plans.map((plan) => (
               <motion.div key={plan.name} variants={item}>
-                <Card className={`
-                  relative overflow-hidden
-                  backdrop-blur-3xl
-                  bg-gradient-to-br ${plan.gradient}
-                  border-0 ring-1 ring-white/10
-                  transition-all duration-500
-                  group
-                  hover:ring-primary/20
-                  hover:-translate-y-2
-                  hover:shadow-[0_20px_80px_-10px_rgba(var(--primary-rgb),0.3)]
-                  ${plan.glowColor}
-                  p-3
-                `}>
-                  <div className="absolute inset-0">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)] opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-tl from-primary/5 via-primary/2 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                <Card className={`relative overflow-hidden backdrop-blur-2xl bg-black/20 border-0 ring-1 ring-white/10 transition-all duration-500 group hover:shadow-2xl hover:-translate-y-2`}>
+                  {/* Gradient Overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${plan.gradient} opacity-20`} />
+                  
+                  {/* Glow Effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-violet-500/20 blur-xl" />
                   </div>
 
+                  {/* Popular Badge */}
                   {plan.popular && (
                     <>
-                      <div className="-top-px right-0 left-0 absolute bg-gradient-to-r from-transparent via-primary to-transparent h-[2px]" />
+                      <div className="top-0 right-0 left-0 absolute bg-gradient-to-r from-transparent via-primary to-transparent h-px" />
                       <div className="top-6 right-6 absolute">
-                        <span className="flex items-center gap-1.5 bg-primary/10 backdrop-blur-xl px-4 py-1.5 rounded-full font-medium text-primary text-sm">
-                          <Zap className="w-4 h-4" />
-                          Most Popular
+                        <span className="border-primary/20 bg-primary/10 px-3 py-1 border rounded-full font-medium text-primary text-xs">
+                          Popular
                         </span>
                       </div>
                     </>
                   )}
 
-                  <div className="relative space-y-8 p-8">
-                    <div className="space-y-3">
-                      <h3 className="bg-clip-text bg-gradient-to-br from-white to-white/70 font-bold text-3xl text-transparent">
-                        {plan.name}
-                      </h3>
+                  <div className="relative space-y-6 p-8">
+                    {/* Plan Name */}
+                    <h3 className="bg-clip-text bg-gradient-to-br from-white to-white/70 font-bold text-3xl text-transparent">
+                      {plan.name}
+                    </h3>
+
+                    {/* Price Section */}
+                    <div className="space-y-2">
                       <div className="flex items-baseline gap-2">
-                        <span className="font-bold text-5xl">$
-                          <NumberTicker
-                            value={isYearly ? plan.displayYearlyPrice : plan.monthlyPrice}
-                          />
-                        </span>
-                        <span className="text-lg text-muted-foreground">
-                          {isYearly ? '/month' : '/month'}
-                        </span>
+                        <span className="text-2xl text-white/60">$</span>
+                        <NumberTicker
+                          value={isYearly ? plan.displayYearlyPrice : plan.monthlyPrice}
+                          className="bg-clip-text bg-gradient-to-r from-white via-white/90 to-white/80 font-bold text-5xl text-transparent"
+                        />
+                        <span className="text-lg text-white/40">/month</span>
                       </div>
                       {isYearly && (
-                        <div className="text-muted-foreground text-sm">
+                        <div className="text-sm text-white/40">
                           ${plan.yearlyPrice} billed yearly
                         </div>
                       )}
                     </div>
 
+                    {/* Features List */}
                     <div className="space-y-4 pt-4">
                       {plan.features.map((feature) => (
-                        <div key={feature} className="flex items-center gap-3">
-                          <div className="bg-primary/10 p-1.5 rounded-full">
-                            <Check className="w-4 h-4 text-primary" />
+                        <div key={feature} className="flex items-center gap-3 group/item">
+                          <div className="relative flex-shrink-0">
+                            <div className="group-hover/item:bg-primary/30 absolute inset-0 bg-primary/20 blur-sm rounded-full transition-all duration-300" />
+                            <Check className="relative w-4 h-4 text-primary" />
                           </div>
-                          <span className="text-lg text-muted-foreground">{feature}</span>
+                          <span className="group-hover/item:text-white/80 text-base text-white/60 transition-colors duration-300">
+                            {feature}
+                          </span>
                         </div>
                       ))}
                     </div>
 
+                    {/* CTA Button */}
                     <Button
-                      className="relative mt-8 w-full overflow-hidden group/button"
-                      size="lg"
-                      variant={plan.popular ? 'default' : 'secondary'}
+                      className={`relative mt-8 w-full h-12 overflow-hidden group/btn ${
+                        plan.popular 
+                          ? 'bg-gradient-to-r from-primary via-primary/90 to-violet-500 hover:from-primary/90 hover:to-violet-500/90'
+                          : 'bg-white/5 hover:bg-white/10'
+                      }`}
                       onClick={() => setSelectedPlan(isYearly ? plan.yearlyPriceId : plan.monthlyPriceId)}
                     >
-                      <span className="relative z-10 font-medium text-lg">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(255,255,255,0.1),transparent_70%)] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
+                      <span className="relative z-10 flex justify-center items-center gap-2 font-medium">
                         Get Started
+                        <motion.div
+                          initial={{ x: -10, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          <Zap className="w-4 h-4" />
+                        </motion.div>
                       </span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/40 to-primary/0 opacity-0 group-hover/button:opacity-100 blur-md transition-all duration-500" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover/button:opacity-100 blur-sm transition-all duration-500" />
                     </Button>
                   </div>
                 </Card>
               </motion.div>
             ))}
           </motion.div>
-        </div>
-
-        <div className="relative mx-auto px-6 w-full max-w-2xl">
-          <a
-            href="https://github.com/duggal1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block group"
-          >
-            <Button
-              className="relative border-white/10 hover:border-white/20 bg-gradient-to-br from-indigo-600 via-blue-700 to-violet-800 shadow-[0_0_30px_rgba(79,70,229,0.15)] backdrop-blur-xl border rounded-2xl w-full h-[4.5rem] transition-all duration-500 overflow-hidden"
-              variant="ghost"
+          <div className="relative mx-auto px-6 w-full max-w-2xl">
+            <a
+              href="https://github.com/duggal1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group"
             >
-              <div className="absolute inset-0">
+              <Button
+                className="relative bg-gradient-to-br from-indigo-600 via-blue-700 to-violet-800 shadow-lg border rounded-2xl w-full h-[4.5rem] transition-all duration-500 overflow-hidden"
+                variant="ghost"
+              >
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.2),transparent)] opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-500/0 via-violet-500/30 to-violet-500/0 opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-500" />
-                <div className="absolute -inset-1 bg-gradient-to-br from-blue-500/20 to-violet-500/20 opacity-0 group-hover:opacity-100 blur-3xl transition-all group-hover:animate-pulse duration-700" />
-              </div>
-              <div className="relative z-10 flex justify-center items-center gap-4">
-                <svg className="group-hover:text-white group-hover:scale-110 w-7 h-7 text-white/90 transition-all duration-500" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                </svg>
-                <span className="group-hover:to-white bg-clip-text bg-gradient-to-r from-white via-white/95 to-white/90 font-semibold text-lg text-transparent transition-all duration-500">
-                  Star on GitHub 
-                </span>
-                <span className="pr-8 text-xl">🌟 </span>
-                <div className="right-4 absolute bg-gradient-to-b from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 w-px h-8 transition-all duration-500" />
-              </div>
-            </Button>
-          </a>
+                <div className="relative z-10 flex justify-center items-center gap-4">
+                  <svg className="group-hover:text-white group-hover:scale-110 w-7 h-7 text-white/90 transition-all duration-500" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg>
+                  <span className="group-hover:to-white bg-clip-text bg-gradient-to-r from-white via-white/95 to-white/90 font-semibold text-lg text-transparent transition-all duration-500">
+                    Star on GitHub 
+                  </span>
+                  <span className="pr-8 text-xl">🌟</span>
+                </div>
+              </Button>
+            </a>
+          </div>
         </div>
-      </div>
-
+        </div>
       <ErrorBoundary>
         <PaymentModal
           isOpen={!!selectedPlan}
@@ -303,3 +298,4 @@ export function PricingSection() {
     </section>
   );
 }
+  

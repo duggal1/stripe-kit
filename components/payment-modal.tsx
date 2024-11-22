@@ -6,7 +6,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import { Loader2, CreditCard } from 'lucide-react';
+import { Loader2, CreditCard, X } from 'lucide-react';
 //
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -117,7 +117,7 @@ function CheckoutForm({ onClose, amount }: { onClose: () => void; amount: number
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-30" />
           <div className="relative flex justify-between items-center p-5">
             <span className="text-muted-foreground text-sm">Amount due</span>
-            <span className="font-medium text-lg text-white/80">
+            <span className="font-semibold text-lg text-white/80">
               ${amount / 100}
             </span>
           </div>
@@ -141,7 +141,7 @@ function CheckoutForm({ onClose, amount }: { onClose: () => void; amount: number
         <Button 
           type="submit" 
           disabled={!stripe || loading}
-          className="relative bg-gradient-to-r from-blue-800 to-blue-900 disabled:opacity-70 shadow-blue-500/20 shadow-lg hover:shadow-blue-500/30 px-6 py-2.5 rounded-lg min-w-[160px] transition-all duration-300 hover:scale-[1.02] disabled:cursor-not-allowed"
+          className="relative bg-transparent disabled:opacity-70 shadow-blue-500/20 shadow-lg hover:shadow-blue-500/30 px-6 py-2.5 rounded-lg"
         >
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.15),transparent_50%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -151,15 +151,15 @@ function CheckoutForm({ onClose, amount }: { onClose: () => void; amount: number
           <span className="relative z-10 flex justify-center items-center gap-2.5">
             {loading ? (
               <>
-                <Loader2 className="w-4 h-4 text-white/90 animate-spin" />
-                <span className="font-medium text-sm text-white/90">
+                <Loader2 className="w-4 h-4 text-white animate-spin" />
+                <span className="font-medium text-emerald-600 text-sm">
                   Processing...
                 </span>
               </>
             ) : (
               <>
-                <CreditCard className="w-4 h-4 text-white/90 transition-transform duration-300" />
-                <span className="font-medium text-sm text-white/90">
+                <CreditCard className="w-4 h-4 text-emerald-600 hover:text-white transition-transform duration-300" />
+                <span className="font-medium text-sm text-white">
                   Pay ${amount / 100}
                 </span>
               </>
@@ -252,20 +252,29 @@ export function PaymentModal({ isOpen, onClose, priceId }: PaymentModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="border-white/[0.08] bg-black/20 shadow-[0_0_1px_1px_rgba(0,0,0,0.1)] backdrop-blur-2xl p-0 sm:max-w-[440px] overflow-hidden">
+      <DialogContent className="border-white/[0.08]">
+        <button
+          onClick={onClose}
+          className="top-4 right-4 absolute hover:bg-white/10 focus:ring-opacity-100 p-2.5 rounded-full text-white/70 hover:text-white transition-all duration-200"
+          aria-label="Close"
+          type="button" // Added type attribute for button
+        >
+          <X className="-mt-3 w-6 h-6 text-red-500" />
+    
+        </button>
         <div className="relative">
-          <div className="-top-40 -left-40 absolute bg-primary/10 opacity-20 blur-3xl rounded-full w-[500px] h-[500px]" />
-          <div className="-right-40 -bottom-40 absolute bg-primary/10 opacity-20 blur-3xl rounded-full w-[500px] h-[500px]" />
+          <div className="-top-40 -left-40 absolute bg-primary/10 opacity-30 blur-3xl rounded-full w-[500px] h-[500px]" />
+          <div className="-right-40 -bottom-40 absolute bg-primary/10 opacity-30 blur-3xl rounded-full w-[500px] h-[500px]" />
           
-          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] mix-blend-overlay" />
+          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.05] mix-blend-overlay" /> 
           
           <div className="relative space-y-6 p-6">
             <div className="space-y-1.5">
-              <DialogTitle className="font-medium text-xl tracking-tight">
-                Complete purchase
+              <DialogTitle className="font-semibold text-2xl text-white tracking-tight">
+                Complete Your Purchase
               </DialogTitle>
-              <p className="text-[15px] text-muted-foreground">
-                Enter your payment details below
+              <p className="text-muted-foreground text-sm">
+                Please enter your payment details below
               </p>
             </div>
             
@@ -283,15 +292,14 @@ export function PaymentModal({ isOpen, onClose, priceId }: PaymentModalProps) {
               <div className="flex justify-center items-center py-12">
                 <div className="relative">
                   <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full animate-pulse" />
-                  <div className="relative bg-gradient-to-b from-primary/80 to-primary p-3 rounded-full">
-                    <Loader2 className="w-5 h-5 text-primary-foreground animate-spin" />
+                  <div className="relative bg-gradient-to-b from-primary/80 to-primary p-4 rounded-full">
+                    <Loader2 className="w-6 h-6 text-primary-foreground animate-spin" />
                   </div>
                 </div>
               </div>
             )}
           </div>
         </div>
-      </DialogContent>
+        </DialogContent>
     </Dialog>
-  );
-}
+  );}

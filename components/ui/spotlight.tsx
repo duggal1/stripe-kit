@@ -3,14 +3,24 @@ import { cn } from "@/lib/utils";
 
 type SpotlightProps = {
   className?: string;
-  fill?: string;
+  fill?: string; // Custom color as HEX or RGB
+  color?: "blue" | "black" | "pink" | "white"; // Predefined color names
 };
 
-export const Spotlight = ({ className, fill }: SpotlightProps) => {
+const colorMap: Record<string, string> = {
+  blue: "#3B82F6",
+  black: "#000000",
+  pink: "#EC4899",
+  white: "#FFFFFF",
+};
+
+export const Spotlight = ({ className, fill, color }: SpotlightProps) => {
+  const computedFill = fill || (color ? colorMap[color] : "white");
+
   return (
     <svg
       className={cn(
-        "animate-spotlight pointer-events-none absolute z-[1]  h-[169%] w-[138%] lg:w-[84%] opacity-0",
+        "animate-spotlight pointer-events-none absolute z-[1] h-[169%] w-[138%] lg:w-[84%] opacity-0",
         className
       )}
       xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +34,7 @@ export const Spotlight = ({ className, fill }: SpotlightProps) => {
           rx="1924.71"
           ry="273.501"
           transform="matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)"
-          fill={fill || "white"}
+          fill={computedFill}
           fillOpacity="0.21"
         ></ellipse>
       </g>
