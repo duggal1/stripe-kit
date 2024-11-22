@@ -13,6 +13,7 @@ import { Switch } from '@/components/ui/switch';
 import { Spotlight } from './ui/spotlight';
 import { Label } from "@/components/ui/label";
 
+//⚠️ Use your price ids here
 const plans = [
   {
     name: 'Basic',
@@ -264,7 +265,7 @@ export function PricingSection() {
           </motion.div>
           <div className="relative mx-auto px-6 w-full max-w-2xl">
             <a
-              href="https://github.com/duggal1"
+              href="https://github.com/duggal1/stripe-kit"
               target="_blank"
               rel="noopener noreferrer"
               className="block group"
