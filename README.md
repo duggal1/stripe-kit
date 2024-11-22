@@ -67,13 +67,6 @@ bun install
 bun dev
 ```
 
-## Environment Configuration
-
-```bash
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=""
-STRIPE_SECRET_KEY=""
-NEXT_PUBLIC_BASE_URL=""
-```
 
 ## Project Commands
 
