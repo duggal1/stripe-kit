@@ -116,8 +116,8 @@ gitGraph
 ## Project Status
 
 <p align="center">
-  <img alt="Code Coverage" src="https://img.shields.io/codecov/c/github/your-username/stripe-starter-kit?style=for-the-badge&logo=codecov&color=F01F7A" />
-  <img alt="Build Integrity" src="https://img.shields.io/github/actions/workflow/status/your-username/stripe-starter-kit/ci.yml?style=for-the-badge&logo=githubactions&color=4B8BBE" />
+  <img alt="Code Coverage" src="https://img.shields.io/codecov/c/github/github.com/duggal1/stripe-kit?style=for-the-badge&logo=codecov&color=F01F7A" />
+  <img alt="Build Integrity" src="https://img.shields.io/github/actions/workflow/status/github.com/duggal1/stripe-kit/ci.yml?style=for-the-badge&logo=githubactions&color=4B8BBE" />
 </p>
 
 ## Licensing
