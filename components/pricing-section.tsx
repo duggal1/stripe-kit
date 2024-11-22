@@ -140,7 +140,7 @@ export function PricingSection() {
                 <Switch
                   checked={isYearly}
                   onCheckedChange={setIsYearly}
-                  className="relative flex border-2 data-[state=checked]:bg-primary data-[state=unchecked]:bg-white/10 border-transparent rounded-full focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background w-11 h-6 transition-colors duration-300 cursor-pointer ease-in-out group focus-visible:outline-none"
+                  className="relative flex border-2 data-[state=checked]:bg-primary data-[state=unchecked]:bg-white/10 border-transparent rounded-full focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background w-11 h-6 transition-colors duration-300 cursor-pointer ease-in-out"
                 >
                   <span className="block relative bg-white shadow-lg rounded-full ring-0 w-5 h-5 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0 duration-300 pointer-events-none ease-in-out">
                     <span className="absolute inset-0 bg-gradient-to-br from-primary via-primary/80 to-violet-500 opacity-0 group-hover:opacity-100 rounded-full transition-opacity" />
@@ -154,7 +154,7 @@ export function PricingSection() {
                 className={`relative px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                   isYearly 
                     ? 'text-white' 
-                    : 'text-muted-foreground hover:text-white/70'
+                    : 'text-white/90 hover:text-white/70'
                 }`}
               >
                 Yearly
