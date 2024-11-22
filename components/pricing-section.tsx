@@ -12,6 +12,8 @@ import NumberTicker from '@/components/ui/number-ticker';
 import { Switch } from '@/components/ui/switch';
 import { Spotlight } from './ui/spotlight';
 import { Label } from "@/components/ui/label";
+import { PricingFAQ } from '@/components/pricing-faq';
+import { PricingComparison } from '@/components/pricing-comparison';
 
 //⚠️ Use your price ids here
 const plans = [
@@ -296,6 +298,14 @@ export function PricingSection() {
           priceId={selectedPlan}
         />
       </ErrorBoundary>
+      
+      <div className="mt-32">
+        <PricingComparison />
+      </div>
+      
+      <div className="mt-32">
+        <PricingFAQ />
+      </div>
     </section>
   );
 }
