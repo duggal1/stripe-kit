@@ -266,7 +266,7 @@ export function PaymentModal({ isOpen, onClose, priceId }: PaymentModalProps) {
           <div className="-top-40 -left-40 absolute bg-primary/10 opacity-30 blur-3xl rounded-full w-[500px] h-[500px]" />
           <div className="-right-40 -bottom-40 absolute bg-primary/10 opacity-30 blur-3xl rounded-full w-[500px] h-[500px]" />
           
-          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.05] mix-blend-overlay" /> 
+         
           
           <div className="relative space-y-6 p-6">
             <div className="space-y-1.5">
