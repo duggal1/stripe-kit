@@ -135,5 +135,5 @@ MIT License - Free for personal and commercial use.
 <div align="center">
   <sub>Building Payment Solutions, One Commit at a Time 🌟</sub>
   
-  **Created by Harshit Duggal**
+  **Created with ❤️ by Harshit Duggal**
 </div>
