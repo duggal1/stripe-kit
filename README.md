@@ -1,53 +1,67 @@
-# 🌟Stripe Starter Kit
-
 <div align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe Starter Kit" width="250" style="filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); transition: transform 0.3s ease; &:hover { transform: scale(1.05); }">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe Starter Kit" width="250" class="logo-animation">
   
-  ## Simple Payment Integration Solution 💳
+  <h1>Stripe Starter Kit</h1>
+  <p>Modern Payment Integration Solution for Next.js Applications</p>
 
-  <p align="center">
-    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/your-username/stripe-starter-kit?style=for-the-badge&logo=github&color=4B8BBE" />
-    <img alt="GitHub Forks" src="https://img.shields.io/github/forks/your-username/stripe-starter-kit?style=for-the-badge&logo=github&color=38B2AC" />
-    <img alt="GitHub Issues" src="https://img.shields.io/github/issues/your-username/stripe-starter-kit?style=for-the-badge&logo=github&color=E56B6F" />
-    <img alt="License" src="https://img.shields.io/github/license/your-username/stripe-starter-kit?style=for-the-badge&logo=open-source-initiative&color=4CAF50" />
-  </p>
+  <div class="badge-container">
+    <a href="https://github.com/duggal1/stripe-kit/stargazers">
+      <img src="https://img.shields.io/github/stars/duggal1/stripe-kit?style=for-the-badge&logo=github&color=4B8BBE&logoColor=white" alt="Stars">
+    </a>
+    <a href="https://github.com/duggal1/stripe-kit/network/members">
+      <img src="https://img.shields.io/github/forks/duggal1/stripe-kit?style=for-the-badge&logo=github&color=38B2AC&logoColor=white" alt="Forks">
+    </a>
+    <a href="https://github.com/duggal1/stripe-kit/issues">
+      <img src="https://img.shields.io/github/issues/duggal1/stripe-kit?style=for-the-badge&logo=github&color=E56B6F&logoColor=white" alt="Issues">
+    </a>
+    <a href="https://github.com/duggal1/stripe-kit/blob/main/LICENSE">
+      <img src="https://img.shields.io/github/license/duggal1/stripe-kit?style=for-the-badge&logo=open-source-initiative&color=4CAF50&logoColor=white" alt="License">
+    </a>
+  </div>
 </div>
 
-## Project Overview
+## 🚀 Overview
 
 A developer-friendly starter kit for streamlined Stripe payment integration. Designed to simplify and enhance payment processing for web applications.
 
-## Key Features
+## ✨ Key Features
 
-> 🔒 **Strong Security**
-> Robust Stripe integration with comprehensive protection
+<div class="feature-grid">
+  <div class="feature-item">
+    <h3>🔒 Strong Security</h3>
+    <p>Robust Stripe integration with comprehensive protection</p>
+  </div>
+  <div class="feature-item">
+    <h3>💨 High Performance</h3>
+    <p>Fast and efficient with Bun and Next.js</p>
+  </div>
+  <div class="feature-item">
+    <h3>🛡️ Flexible Architecture</h3>
+    <p>Modular and easily expandable framework</p>
+  </div>
+  <div class="feature-item">
+    <h3>📊 Detailed Monitoring</h3>
+    <p>Advanced logging and transaction tracking</p>
+  </div>
+</div>
 
-> 💨 **High Performance**
-> Fast and efficient with Bun and Next.js
+## 🛠️ Technology Stack
 
-> 🛡️ **Flexible Architecture**
-> Modular and easily expandable framework
-
-> 📊 **Detailed Monitoring**
-> Advanced logging and transaction tracking
-
-## Technology Stack 
-
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=typescript,nextjs,bun,nodejs,tailwind,prisma,docker,vercel,graphql" width="600" />
-</p>
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=typescript,nextjs,bun,nodejs,tailwind,prisma,docker,vercel,graphql" width="600" alt="Tech Stack" />
+</div>
 
 | Category | Technologies | Purpose |
-|----------|--------------|---------|
+|:---------|:------------|:---------|
 | **Core** | TypeScript, Next.js, Bun | Reliable, type-safe foundation |
 | **Payments** | Stripe | Secure payment processing |
 | **Database** | Prisma, PostgreSQL | Modern database management |
 | **Validation** | Zod | Type checking |
 | **Logging** | Pino | Performance logging |
 
-## Quick Setup
+## 🚀 Quick Setup
 
-### System Requirements
+### Prerequisites
 
 - Bun 1.0+
 - Node.js 18+
@@ -67,66 +81,101 @@ bun install
 bun dev
 ```
 
+## 📦 Components
 
-## Project Commands
+- `<StripeProvider />` - Stripe context provider
+- `<PaymentForm />` - Customizable payment form
+- `<PricingTable />` - Responsive pricing tables
+- `<SubscriptionManager />` - Subscription handling
+- `<PaymentHistory />` - Transaction history display
+- `<InvoiceViewer />` - Invoice management
+- `<PaymentStatus />` - Real-time payment status
+- `<CustomerPortal />` - Customer management interface
 
-| Command | Function |
-|---------|----------|
-| `bun dev` | Start local development |
-| `bun test` | Run tests |
-| `bun lint` | Check code quality |
-| `bun build` | Prepare for production |
+## 🤝 Contributing
 
-## Contributing
+We welcome contributions! Here's how you can help:
 
-### Ways to Contribute
+### Getting Started
 
-1. Report issues
-2. Suggest improvements
-3. Submit pull requests
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Contribution Workflow
+### Development Workflow
 
 ```mermaid
 gitGraph
-    commit id: "Project Inception"
+    commit id: "Initial Setup"
     branch feature
     checkout feature
-    commit id: "Innovative Implementation"
+    commit id: "Feature Development"
+    commit id: "Testing"
     checkout main
-    merge feature id: "Collaborative Integration"
-    commit id: "Strategic Release"
+    merge feature id: "Code Review"
+    commit id: "Release"
 ```
 
-## Contributors
+## 👥 Contributors
 
-<p align="center">
+<div align="center">
   <a href="https://github.com/duggal1/stripe-kit/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=duggal1/stripe-kit" alt="Contributors Mosaic" width="80"/>
+    <img src="https://contrib.rocks/image?repo=duggal1/stripe-kit" alt="Contributors" />
   </a>
-</p>
+</div>
 
-## Project Status
+## 📊 Project Status
 
-<p align="center">
-  <img alt="Code Coverage" src="https://img.shields.io/codecov/c/github/github.com/duggal1/stripe-kit?style=for-the-badge&logo=codecov&color=F01F7A" />
-  <img alt="Build Integrity" src="https://img.shields.io/github/actions/workflow/status/github.com/duggal1/stripe-kit/ci.yml?style=for-the-badge&logo=githubactions&color=4B8BBE" />
-</p>
+<div align="center">
+  <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/duggal1/stripe-kit/ci.yml?style=for-the-badge&logo=githubactions&color=4B8BBE&label=build" />
+  <img alt="Code Coverage" src="https://img.shields.io/codecov/c/github/duggal1/stripe-kit?style=for-the-badge&logo=codecov&color=F01F7A&label=coverage" />
+  <img alt="Last Commit" src="https://img.shields.io/github/last-commit/duggal1/stripe-kit?style=for-the-badge&logo=git&color=4CAF50&label=last%20commit" />
+</div>
 
-## Licensing
+## 📄 License
 
-MIT License - Free for personal and commercial use.
+### Personal Use
+- Free for personal and educational use
+- Must credit the author
+- Cannot change core payment logic
 
-## Support the Project
+### License Features
+| Feature | Personal | Commercial |
+|:--------|:---------|:-----------|
+| Core Features | ✓ | ✓ |
+| Updates | Security only | Full updates |
+| Commercial Use | ✗ | ✓ |
 
-- Spread the word
-- Provide feedback
-- Consider sponsoring
+## 💝 Support
+
+If you like this project, consider supporting it:
+
+<div align="center">
+  <a href="https://github.com/sponsors/duggal1">
+    <img src="https://img.shields.io/badge/Sponsor-GitHub-ea4aaa?style=for-the-badge&logo=github&logoColor=white" alt="Sponsor on GitHub">
+  </a>
+  
+  <a href="https://stripe-kit.dev/sponsor">
+    <img src="https://img.shields.io/badge/Become_a_Sponsor-4B8BBE?style=for-the-badge&logo=stripe&logoColor=white" alt="Become a Sponsor">
+  </a>
+</div>
+
+### Why Sponsor?
+- 🚀 Support ongoing development
+- ⭐ Get priority support
+- 🎯 Influence feature roadmap
+- 💎 Access exclusive components
+- 🛡️ Commercial license included
+
+<div align="center">
+  <sub>Your support keeps this project alive! 💖</sub>
+</div>
 
 ---
 
 <div align="center">
-  <sub>Building Payment Solutions, One Commit at a Time 🌟</sub>
-  
-  **Created with ❤️ by Harshit Duggal**
+  <p>Building Payment Solutions, One Commit at a Time 🌟</p>
+  <sub>Created with ❤️ by Harshit Duggal</sub>
 </div>
