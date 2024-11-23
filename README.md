@@ -20,7 +20,7 @@
   </div>
 </div>
 
-## 🚀 Overview
+## Overview
 
 A developer-friendly starter kit for streamlined Stripe payment integration. Designed to simplify and enhance payment processing for web applications.
 
@@ -64,7 +64,7 @@ A developer-friendly starter kit for streamlined Stripe payment integration. Des
 ### Prerequisites
 
 - Bun 1.0+
-- Node.js 18+
+- Node.js 20+
 - Stripe Account
 
 ```bash
