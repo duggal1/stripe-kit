@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { Spotlight } from '@/components/ui/spotlight';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
+import Particles from '@/components/ui/particles';
 
 //added navbar
 const inter = Inter({ subsets: ['latin'] });
@@ -31,11 +32,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
+    
       
           <div className="relative flex flex-col min-h-screen">
             <Navbar />
+           
+      
             <Spotlight className="-top-40 left-0 md:left-60" fill="blue" />
             <main className="flex-grow">
+      
               {children}
             </main>
             <Footer />

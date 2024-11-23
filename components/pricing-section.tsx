@@ -71,10 +71,29 @@ export function PricingSection() {
     show: { opacity: 1, y: 0 },
   };
 
+  // Debounced state change handler to prevent rapid toggling
+  const handlePricingToggle = (value: boolean) => {
+    // Disable the switch temporarily while transitioning
+    const switchElement = document.querySelector('[role="switch"]');
+    if (switchElement) {
+      switchElement.setAttribute('aria-disabled', 'true');
+    }
+
+    setIsYearly(value);
+
+    // Re-enable the switch after transition
+    setTimeout(() => {
+      if (switchElement) {
+        switchElement.setAttribute('aria-disabled', 'false');
+      }
+    }, 300);
+  };
+
   return (
 
     <section className="relative py-32 overflow-hidden">
       
+     
       <Particles
         className="absolute inset-0 opacity-40"
         quantity={100}
@@ -82,8 +101,6 @@ export function PricingSection() {
         color="#ffffff"
         refresh={false}
       />
-      
-
       <div className="absolute inset-0" />
 
       <div className="flex flex-col gap-24">
@@ -118,19 +135,25 @@ export function PricingSection() {
           <div className="flex justify-center mb-16">
             <div className="relative flex items-center gap-3 border-white/10 bg-gradient-to-b from-white/5 to-white/[0.02] shadow-[0_0_1px_1px_rgba(0,0,0,0.1)] backdrop-blur-xl px-2 py-2 border rounded-full">
               <button
-                onClick={() => setIsYearly(false)}
+                onClick={() => handlePricingToggle(false)}
                 className={`relative px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                   !isYearly 
                     ? 'text-white' 
                     : 'text-muted-foreground hover:text-white/70'
                 }`}
+                disabled={!isYearly}
               >
                 Monthly
                 {!isYearly && (
                   <motion.div
                     layoutId="pricing-toggle"
                     className="-z-10 absolute inset-0 bg-gradient-to-r from-primary/80 via-primary to-primary/80 backdrop-blur-xl rounded-full"
-                    transition={{ type: "spring", duration: 0.6 }}
+                    transition={{ 
+                      type: "spring", 
+                      stiffness: 200, 
+                      damping: 25,
+                      duration: 0.3 
+                    }}
                   />
                 )}
               </button>
@@ -138,30 +161,57 @@ export function PricingSection() {
               <div className="relative px-4 py-2">
                 <Switch
                   checked={isYearly}
-                  onCheckedChange={setIsYearly}
-                  className="relative flex border-2 data-[state=checked]:bg-primary data-[state=unchecked]:bg-white/10 border-transparent rounded-full focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background w-11 h-6 transition-colors duration-300 cursor-pointer ease-in-out"
+                  onCheckedChange={handlePricingToggle}
+                  className={`
+                    relative flex h-6 w-11 cursor-pointer rounded-full border-2 border-transparent
+                    transition-colors duration-300 ease-in-out focus-visible:outline-none
+                    focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2
+                    disabled:cursor-not-allowed disabled:opacity-50
+                    ${isYearly ? 'bg-primary' : 'bg-white/10'}
+                  `}
                 >
-                  <span className="block relative bg-white shadow-lg rounded-full ring-0 w-5 h-5 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0 duration-300 pointer-events-none ease-in-out">
+                  <motion.span 
+                    className={`
+                      pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg
+                      transition-transform duration-300 ease-in-out
+                    `}
+                    animate={{
+                      x: isYearly ? 20 : 0,
+                      scale: isYearly ? 1.1 : 1,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 25,
+                      duration: 0.3
+                    }}
+                  >
                     <span className="absolute inset-0 bg-gradient-to-br from-primary via-primary/80 to-violet-500 opacity-0 group-hover:opacity-100 rounded-full transition-opacity" />
                     <span className="absolute inset-0.5 bg-white rounded-full" />
-                  </span>
+                  </motion.span>
                 </Switch>
               </div>
 
               <button
-                onClick={() => setIsYearly(true)}
+                onClick={() => handlePricingToggle(true)}
                 className={`relative px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                   isYearly 
                     ? 'text-white' 
                     : 'text-white/90 hover:text-white/70'
                 }`}
+                disabled={isYearly}
               >
                 Yearly
                 {isYearly && (
                   <motion.div
                     layoutId="pricing-toggle"
                     className="-z-10 absolute inset-0 bg-gradient-to-r from-primary/80 via-primary to-primary/80 backdrop-blur-xl rounded-full"
-                    transition={{ type: "spring", duration: 0.6 }}
+                    transition={{ 
+                      type: "spring", 
+                      stiffness: 200, 
+                      damping: 25,
+                      duration: 0.3 
+                    }}
                   />
                 )}
                 <span className="inline-flex items-center bg-gradient-to-tl from-indigo-500 via-purple-500 to-pink-500 shadow-lg ml-2 px-3 py-1 rounded-full font-semibold text-white text-xs transform transition-transform hover:scale-105">

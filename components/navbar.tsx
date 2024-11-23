@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ModeToggle } from '@/components/mode-toggle';
+
 import { Sparkles, Menu } from 'lucide-react';
 import {
   Sheet,
@@ -45,7 +45,7 @@ export function Navbar() {
                 <Sparkles className="w-6 h-6 text-primary animate-pulse" />
               </div>
             </div>
-            <span className="bg-clip-text bg-gradient-to-r from-white via-white to-white/80 pl-10 max-h-0 font-bold text-lg text-transparent tracking-tight animate-text-shimmer">
+            <span className="-mt-10 text-white/90 pr-14 max-h-0 font-bold text-3xl tracking-tight animate-text-shimmer">
               Stripe Kit
             </span>
           </Link>
@@ -73,7 +73,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-6">
           <div className="md:flex items-center gap-6 hidden">
-            <ModeToggle />
+           
            
             <Button 
               className="relative bg-[length:200%_auto] bg-gradient-to-r from-primary via-violet-500 to-primary hover:bg-right-bottom font-medium text-sm duration-500 overflow-hidden group"

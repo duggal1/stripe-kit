@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Minus, Sparkles, Zap } from 'lucide-react';
+import Particles from './ui/particles';
 
 const plans = [
   {
@@ -62,6 +63,13 @@ export function PricingComparison() {
       animate={{ opacity: 1 }}
       className="mx-auto px-6 max-w-7xl"
     >
+       <Particles
+        className="absolute inset-0 opacity-40"
+        quantity={100}
+        ease={100}
+        color="#ffffff"
+        refresh={false}
+      />
       <div className="relative space-y-6 mb-24 text-center">
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
